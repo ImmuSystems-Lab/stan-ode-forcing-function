@@ -1,0 +1,45 @@
+---
+name: Render and Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    container:
+      image: rocker/verse:latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install RStan
+        run: |
+          Rscript -e 'pak::local_install_deps("stanodeffr", dependencies = TRUE)'
+      
+      - name: Install LaTeX packages
+        run: |
+          Rscript -e 'tinytex::tlmgr_install("amsfonts")'
+
+      - name: Render Rmd
+        run: |
+          Rscript -e 'rmarkdown::render("stanodeffr/01-stan-ode-forcing-function.Rmd", output_format = "all", output_dir = "public")'
+
+      - name: Create index.html pages to see all vignette files
+        run: |
+          cd public/
+          apt update
+          apt -y install tree
+          tree -H '.' \
+            -T 'Vignettes for Stan ODE forcing function' \
+            -I index.html \
+            -I 01-stan-ode-forcing-function_files \
+            --noreport \
+            --houtro "" \
+            -o index.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4.1.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
