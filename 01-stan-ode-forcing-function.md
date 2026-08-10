@@ -252,7 +252,7 @@ and mix together that we will explore in the next section.
     ## b       0.61    0.19   0.27    0.38    0.45    0.49  0.66  1.14     2   7.04
     ## lp__ -198.85  150.29 212.55 -520.56 -333.77 -137.53 -6.28 -5.62     2 210.97
     ## 
-    ## Samples were drawn using NUTS(diag_e) at Mon Jun  1 17:53:25 2026.
+    ## Samples were drawn using NUTS(diag_e) at Mon Aug 10 21:44:20 2026.
     ## For each parameter, n_eff is a crude measure of effective sample size,
     ## and Rhat is the potential scale reduction factor on split chains (at 
     ## convergence, Rhat=1).
@@ -681,11 +681,11 @@ but we will get an error if we don't store into `output.var`.
     ## post-warmup draws per chain=4000, total post-warmup draws=16000.
     ## 
     ##         mean se_mean   sd    2.5%     25%     50%     75%   97.5% n_eff Rhat
-    ## b       0.12    0.00 0.02    0.08    0.10    0.11    0.13    0.15  7910    1
-    ## a       0.12    0.00 0.02    0.08    0.10    0.12    0.13    0.16  7942    1
-    ## lp__ -188.70    0.01 1.06 -191.51 -189.12 -188.38 -187.93 -187.64  5816    1
+    ## b       0.12    0.00 0.02    0.08    0.10    0.11    0.13    0.15  7933    1
+    ## a       0.12    0.00 0.02    0.09    0.10    0.12    0.13    0.16  7911    1
+    ## lp__ -188.68    0.01 1.08 -191.59 -189.06 -188.34 -187.92 -187.64  5483    1
     ## 
-    ## Samples were drawn using NUTS(diag_e) at Mon Jun  1 17:53:41 2026.
+    ## Samples were drawn using NUTS(diag_e) at Mon Aug 10 21:44:37 2026.
     ## For each parameter, n_eff is a crude measure of effective sample size,
     ## and Rhat is the potential scale reduction factor on split chains (at 
     ## convergence, Rhat=1).
@@ -754,7 +754,7 @@ but we will get an error if we don't store into `output.var`.
     ## Warning: Dropping 'draws_df' class as required metadata was removed.
 
     ##    user  system elapsed 
-    ##  31.658   0.004  31.666
+    ##  22.456   0.000  22.460
 
     ## Plot the fitted ODEs from Stan.
     df_stan_fit |>
