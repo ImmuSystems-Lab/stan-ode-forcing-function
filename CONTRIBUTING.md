@@ -1,5 +1,17 @@
 # Contributing code
 
+## Committing changes to the python notebook
+
+One time setup to use the `nbstripout` git filter in your cloned repository:
+
+```shell
+cd stanodeffpy/
+export UV_PROJECT_ENVIRONMENT=$HOME/.local/share/venv-stanodeffpy
+uv sync --group dev
+uv run nbstripout --install
+# Now you can `git add` and `git commit` the ipynb file as normal.
+```
+
 ## Git commit messages
 
 When writing your git commit message,

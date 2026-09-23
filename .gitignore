@@ -1,0 +1,7 @@
+# cmdstanpy:
+/stanodeffpy/lv
+/stanodeffpy/lv-forcing-function
+# jupyter:
+/stanodeffpy/.ipynb_checkpoints/
+# uv:
+/stanodeffpy/.python-version
