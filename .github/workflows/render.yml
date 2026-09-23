@@ -14,17 +14,64 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install RStan
-        run: |
-          Rscript -e 'pak::local_install_deps("stanodeffr", dependencies = TRUE)'
-      
-      - name: Install LaTeX packages
-        run: |
-          Rscript -e 'tinytex::tlmgr_install("amsfonts")'
+      - name: Install LaTeX packages to render PDF outputs
+        run: >-
+          Rscript -e
+          'tinytex::tlmgr_install(c(
+          "adjustbox",
+          "amsfonts",
+          "booktabs",
+          "caption",
+          "enumitem",
+          "eurosym",
+          "float",
+          "fontspec",
+          "grffile",
+          "jknapltx",
+          "pdfcol",
+          "rsfs",
+          "soul",
+          "tcolorbox",
+          "titling",
+          "ulem",
+          "unicode-math",
+          "upquote"
+          ))'
 
-      - name: Render Rmd
-        run: |
-          Rscript -e 'rmarkdown::render("stanodeffr/01-stan-ode-forcing-function.Rmd", output_format = "all", output_dir = "public")'
+      - name: Install RStan and dependencies
+        run: >-
+          Rscript -e
+          'pak::local_install_deps("stanodeffr", dependencies = TRUE)'
+
+      - name: Install cmdstanpy and dependencies
+        run: |-
+          cd stanodeffpy/
+          wget -qO- https://astral.sh/uv/install.sh | sh
+          . $HOME/.local/bin/env
+          uv sync
+
+      - name: Render RMarkdown into all output formats
+        run: >-
+          Rscript -e '
+          rmarkdown::render(
+          "stanodeffr/01-stan-ode-forcing-function.Rmd",
+          output_format = "all",
+          output_dir = "public/r"
+          )
+          '
+
+      - name: Render Jupyter notebook into all output formats
+        run: |-
+          cd stanodeffpy/
+          . $HOME/.local/bin/env
+          uv run jupyter execute --inplace 01-stan-ode-forcing-function.ipynb
+          for format in markdown html python pdf; do
+            uv run \
+            jupyter nbconvert \
+            --output-dir ../public/python \
+            --to $format \
+            01-stan-ode-forcing-function.ipynb
+          done
 
       - name: Create index.html pages to see all vignette files
         run: |
