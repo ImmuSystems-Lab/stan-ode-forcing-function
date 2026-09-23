@@ -150,7 +150,7 @@ noisy simulated data.
       geom_line() +
       geom_point()
 
-![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/01-stan-ode-forcing-function_files/figure-markdown_strict/plot-noise-added-to-ground-truth-1.png)
+![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/r/01-stan-ode-forcing-function_files/figure-markdown_strict/plot-noise-added-to-ground-truth-1.png)
 
 ## Fit the ODE parameters using the equivalent Stan model
 
@@ -252,7 +252,7 @@ and mix together that we will explore in the next section.
     ## b       0.61    0.19   0.27    0.38    0.45    0.49  0.66  1.14     2   7.04
     ## lp__ -198.85  150.29 212.55 -520.56 -333.77 -137.53 -6.28 -5.62     2 210.97
     ## 
-    ## Samples were drawn using NUTS(diag_e) at Wed Sep 23 16:30:09 2026.
+    ## Samples were drawn using NUTS(diag_e) at Wed Sep 23 20:46:09 2026.
     ## For each parameter, n_eff is a crude measure of effective sample size,
     ## and Rhat is the potential scale reduction factor on split chains (at 
     ## convergence, Rhat=1).
@@ -264,17 +264,17 @@ and mix together that we will explore in the next section.
 
     ## outer_level: 0.95 (95% intervals)
 
-![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/01-stan-ode-forcing-function_files/figure-markdown_strict/tab-results-1.png)
+![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/r/01-stan-ode-forcing-function_files/figure-markdown_strict/tab-results-1.png)
 
     ## Find initial values creating problems with chains converging.
     traceplot(fit1, inc_warmup = TRUE, window = c(0, 200))
 
-![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/01-stan-ode-forcing-function_files/figure-markdown_strict/tab-results-2.png)
+![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/r/01-stan-ode-forcing-function_files/figure-markdown_strict/tab-results-2.png)
 
     ## Show all samples including warmup.
     traceplot(fit1, inc_warmup = TRUE)
 
-![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/01-stan-ode-forcing-function_files/figure-markdown_strict/tab-results-3.png)
+![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/r/01-stan-ode-forcing-function_files/figure-markdown_strict/tab-results-3.png)
 
     ## Show the pairs plot.
     pairs(fit1, pars = c("a", "b", "lp__"))
@@ -283,7 +283,7 @@ and mix together that we will explore in the next section.
     ## Warning in par(usr): argument 1 does not name a graphical parameter
     ## Warning in par(usr): argument 1 does not name a graphical parameter
 
-![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/01-stan-ode-forcing-function_files/figure-markdown_strict/tab-results-4.png)
+![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/r/01-stan-ode-forcing-function_files/figure-markdown_strict/tab-results-4.png)
 
     ## Plot ODEs using a sample of 100 parameters from each of the chains.
     n <- 100
@@ -326,7 +326,7 @@ and mix together that we will explore in the next section.
 
     ## Warning: Dropping 'draws_df' class as required metadata was removed.
 
-![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/01-stan-ode-forcing-function_files/figure-markdown_strict/tab-results-5.png)
+![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/r/01-stan-ode-forcing-function_files/figure-markdown_strict/tab-results-5.png)
 
 In the last plot above that shows 100 ODE samples simulated by each of
 the 4 chains, we see that one of the chains is not able to capture the
@@ -343,7 +343,7 @@ between these “peaks” is hard and (2) we are using large priors
                     args = c(meanlog = 0.5,
                              sdlog = 0.5))
 
-![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/01-stan-ode-forcing-function_files/figure-markdown_strict/unnamed-chunk-1-1.png)
+![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/r/01-stan-ode-forcing-function_files/figure-markdown_strict/unnamed-chunk-1-1.png)
 
 But the bottom row of the pairs plot further above shows that the values
 of `b` (*β*) around 0.5 have the highest `lp__` (log-probability) and
@@ -440,7 +440,7 @@ and their corresponding coefficients are
       geom_line() +
       geom_point(aes(y = y))
 
-![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/01-stan-ode-forcing-function_files/figure-markdown_strict/poly-choose-1.png)
+![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/r/01-stan-ode-forcing-function_files/figure-markdown_strict/poly-choose-1.png)
 
     ## T-test showing other than the intercept, terms up to and including degree
     ## that captures the most variance.
@@ -496,7 +496,7 @@ and their corresponding coefficients are
       geom_line() +
       geom_vline(xintercept = degree, linetype = 2)
 
-![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/01-stan-ode-forcing-function_files/figure-markdown_strict/poly-choose-2.png)
+![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/r/01-stan-ode-forcing-function_files/figure-markdown_strict/poly-choose-2.png)
 
     ## Workaround bug in non-standard evaluation of predict.lm().
     i <- degree
@@ -540,7 +540,7 @@ and their corresponding coefficients are
                    filter(type == "orig") %>%
                    mutate(type = factor("ff", levels = c("orig", "ff"))))
 
-![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/01-stan-ode-forcing-function_files/figure-markdown_strict/plot-lv-ff-1.png)
+![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/r/01-stan-ode-forcing-function_files/figure-markdown_strict/plot-lv-ff-1.png)
 
 ## Fit the ODE parameters using the equivalent modified Stan model
 
@@ -685,7 +685,7 @@ but we will get an error if we don't store into `output.var`.
     ## a       0.12    0.00 0.02    0.08    0.10    0.12    0.13    0.16  7942    1
     ## lp__ -188.70    0.01 1.06 -191.51 -189.12 -188.38 -187.93 -187.64  5816    1
     ## 
-    ## Samples were drawn using NUTS(diag_e) at Wed Sep 23 16:30:26 2026.
+    ## Samples were drawn using NUTS(diag_e) at Wed Sep 23 20:46:24 2026.
     ## For each parameter, n_eff is a crude measure of effective sample size,
     ## and Rhat is the potential scale reduction factor on split chains (at 
     ## convergence, Rhat=1).
@@ -696,15 +696,15 @@ but we will get an error if we don't store into `output.var`.
 
     ## outer_level: 0.95 (95% intervals)
 
-![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/01-stan-ode-forcing-function_files/figure-markdown_strict/tab-results-forcing-function-1.png)
+![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/r/01-stan-ode-forcing-function_files/figure-markdown_strict/tab-results-forcing-function-1.png)
 
     traceplot(fit_stan)
 
-![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/01-stan-ode-forcing-function_files/figure-markdown_strict/tab-results-forcing-function-2.png)
+![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/r/01-stan-ode-forcing-function_files/figure-markdown_strict/tab-results-forcing-function-2.png)
 
     traceplot(fit_stan, inc_warmup = TRUE, window = c(0, 200))
 
-![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/01-stan-ode-forcing-function_files/figure-markdown_strict/tab-results-forcing-function-3.png)
+![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/r/01-stan-ode-forcing-function_files/figure-markdown_strict/tab-results-forcing-function-3.png)
 
     pairs(fit_stan, pars = c("a", "b", "lp__"))
 
@@ -712,7 +712,7 @@ but we will get an error if we don't store into `output.var`.
     ## Warning in par(usr): argument 1 does not name a graphical parameter
     ## Warning in par(usr): argument 1 does not name a graphical parameter
 
-![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/01-stan-ode-forcing-function_files/figure-markdown_strict/tab-results-forcing-function-4.png)
+![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/r/01-stan-ode-forcing-function_files/figure-markdown_strict/tab-results-forcing-function-4.png)
 
     ## Plot ODEs using a sample of 100 parameters from each of the chains.
     set.seed(123) # For sample_n below.
@@ -754,7 +754,7 @@ but we will get an error if we don't store into `output.var`.
     ## Warning: Dropping 'draws_df' class as required metadata was removed.
 
     ##    user  system elapsed 
-    ##  31.931   0.001  31.945
+    ##  30.356   0.002  30.365
 
     ## Plot the fitted ODEs from Stan.
     df_stan_fit |>
@@ -778,7 +778,7 @@ but we will get an error if we don't store into `output.var`.
     ## Warning in geom_point(data = pivot_longer(as.data.frame(noisy[, c("time", :
     ## Ignoring empty aesthetics: `group` and `colour`.
 
-![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/01-stan-ode-forcing-function_files/figure-markdown_strict/tab-results-forcing-function-5.png)
+![](/__w/stan-ode-forcing-function/stan-ode-forcing-function/public/r/01-stan-ode-forcing-function_files/figure-markdown_strict/tab-results-forcing-function-5.png)
 
 # Finishing thoughts
 
